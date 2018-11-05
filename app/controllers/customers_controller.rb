@@ -1,7 +1,11 @@
 class CustomersController < ApplicationController
 
   def index
-    render json: "it works!"
+
+    customers = Customer.all
+
+    render json: customers, status: :ok
+
   end
 
 end

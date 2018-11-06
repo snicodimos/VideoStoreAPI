@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer: 1
-  movie: 1
+  customer: semret
+  movie: titanic
+  due_date: 2018-11-06
+  checkedout: true
 
 two:
-  customer: 2
-  movie: 2
+  customer: goeun
+  movie: notebook
 
 three:
-  customer: 1
-  movie: 2
+  customer: semret
+  movie: titanic

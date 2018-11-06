@@ -9,7 +9,11 @@ one:
 two:
   customer: goeun
   movie: notebook
+  due_date: 2018-11-06
+  checkedout: false
 
 three:
   customer: semret
   movie: titanic
+  due_date: 2018-11-06
+  checkedout: true

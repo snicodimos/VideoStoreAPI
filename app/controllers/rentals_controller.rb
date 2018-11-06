@@ -1,15 +1,19 @@
 class RentalsController < ApplicationController
 
   def checkout
-    # creating a new instance of a rental
     rental = Rental.new(rental_params)
-
-    # while we check if the avaiable inventory of the movie is not 0
+    customer = Customer.find_by(id: rental_params[:customer_id])
     movie = Movie.find_by(id: rental_params[:movie_id])
 
     if movie.available_inventory > 0
       rental.due_date = Date.today + 7
       if rental.save
+        checked_out = customer.movies_checked_out_count
+        customer.update(movies_checked_out_count: checked_out +1)
+
+        inventory = movie.available_inventory
+        movie.update(available_inventory: inventory - 1)
+
         render json: {rental_id: rental.id}
       else
         render_error(:bad_request, rental.errors.messages)
@@ -18,10 +22,6 @@ class RentalsController < ApplicationController
       render_error(:forbidden, "No movie in available inventory.")
     end
 
-
-    # set the due date (this is a model logic) that will be called here
-    # customer checked_out_count will be increamented (model methods)
-    # available_inventory will be decremented (model test)
   end
 
   def checkin

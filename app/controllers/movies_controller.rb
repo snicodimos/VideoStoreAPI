@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
 
   def index
     movies = Movie.all
-
     render json: jsonify_index(movies), status: :ok
   end
 
@@ -25,7 +24,6 @@ class MoviesController < ApplicationController
     else
       render_error(:bad_request, movie.errors.messages)
     end
-
   end
 
   private
@@ -36,11 +34,10 @@ class MoviesController < ApplicationController
 
   def jsonify_index(movie_data)
     return movie_data.as_json(only: [:id, :title, :release_date])
-
   end
+
   def jsonify_show(movie_data)
     return movie_data.as_json(only: [:title, :overview, :release_date, :inventory])
-
   end
 
 end

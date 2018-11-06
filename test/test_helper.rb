@@ -10,6 +10,14 @@ Minitest::Reporters.use!(
   Minitest.backtrace_filter
 )
 
+def check_response(expected_status: :success, expected_type: )
+  must_respond_with expected_status
+  expect(response.header['Content-Type']).must_include 'json'
+
+  body = JSON.parse(response.body)
+  expect(body).must_be_kind_of expected_type
+  return body
+end
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:

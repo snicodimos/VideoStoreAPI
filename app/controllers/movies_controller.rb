@@ -29,7 +29,11 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :overview, :release_date, :inventory)
+    # 11 tests are failing and found out that we need to change the params from
+    # params.require(:movie)
+    # now 8 tests passed on postman
+
+    params.permit(:title, :overview, :release_date, :inventory)
   end
 
   def jsonify_index(movie_data)
@@ -37,7 +41,7 @@ class MoviesController < ApplicationController
   end
 
   def jsonify_show(movie_data)
-    return movie_data.as_json(only: [:title, :overview, :release_date, :inventory])
+    return movie_data.as_json(only: [:title, :overview, :release_date, :inventory, :available_inventory])
   end
 
 end

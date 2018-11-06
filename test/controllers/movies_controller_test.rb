@@ -2,7 +2,7 @@ require "test_helper"
 
 describe MoviesController do
 
-  SHOW_FIELDS = %w(title overview release_date inventory).sort
+  SHOW_FIELDS = %w(title overview release_date inventory available_inventory).sort
   INDEX_FIELDS = %w(id title release_date).sort
 
 
@@ -48,12 +48,10 @@ describe MoviesController do
 
     before do
       @params = {
-        "movie": {
           "title": "Bohemian Rhapsody",
           "overview": "Bless Freddie Mercury",
           "release_date": Date.parse("2018-10-10"),
           "inventory": 2
-        }
       }
     end
 
@@ -65,7 +63,7 @@ describe MoviesController do
     end
 
     it "returns error for invalid data" do
-      @params[:movie][:title] = nil
+      @params[:title] = nil
       post movies_path(@params)
 
       body = check_response(expected_status: :bad_request, expected_type: Hash)

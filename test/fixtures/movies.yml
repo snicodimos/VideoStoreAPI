@@ -5,9 +5,12 @@ titanic:
   overview: There was definitely room for two on this door!!!!!!
   release_date: 1995-11-05
   inventory: 15
+  available_inventory: 15
+
 
 notebook:
   title: The Notebook
   overview: Ryan Gosling and Rachel McAdams make out in the rain
   release_date: 2008-11-05
-  inventory: 100
+  inventory: 10
+  available_inventory: 8

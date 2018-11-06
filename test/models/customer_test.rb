@@ -56,6 +56,14 @@ describe Customer do
 
       semret.valid?.must_equal false
     end
+  end
 
+  describe 'relationship' do
+    it 'has many rentals' do
+      customer = Customer.first
+      customer.rentals.each do |rental|
+        rental.must_be_instance_of Rental
+      end
+    end
   end
 end

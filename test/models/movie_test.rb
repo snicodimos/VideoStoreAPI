@@ -40,6 +40,14 @@ describe Movie do
       titanic.inventory = nil
       titanic.valid?.must_equal false
     end
+  end
 
+  describe 'relationship' do
+    it 'has many rentals' do
+      movie = Movie.first
+      movie.rentals.each do |rental|
+        rental.must_be_instance_of Rental
+      end
+    end
   end
 end

@@ -14,3 +14,10 @@ notebook:
   release_date: 2008-11-05
   inventory: 10
   available_inventory: 8
+
+moana:
+  title: Moana
+  overview: Hawai'i is gr888
+  release_date: 2008-11-05
+  inventory: 10
+  available_inventory: 0

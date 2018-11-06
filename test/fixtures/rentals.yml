@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer_id: 1
-  movie_id: 1
+  customer: 1
+  movie: 1
 
 two:
-  customer_id: 1
-  movie_id: 1
+  customer: 2
+  movie: 2
+
+three:
+  customer: 1
+  movie: 2

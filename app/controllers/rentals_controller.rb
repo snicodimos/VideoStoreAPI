@@ -14,7 +14,7 @@ class RentalsController < ApplicationController
         inventory = movie.available_inventory
         movie.update(available_inventory: inventory - 1)
 
-        render json: {rental_id: rental.id}
+        render json: {rental_id: rental.id}, status: :ok
       else
         render_error(:bad_request, rental.errors.messages)
       end

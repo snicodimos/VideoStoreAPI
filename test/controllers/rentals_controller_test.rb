@@ -8,7 +8,6 @@ describe RentalsController do
     end
 
     it "creates an instance of Rental with valid data" do
-
       customer = customers(:goeun)
       movie = movies(:titanic)
 

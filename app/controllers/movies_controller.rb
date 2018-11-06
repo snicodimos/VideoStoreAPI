@@ -7,9 +7,18 @@ class MoviesController < ApplicationController
   end
 
   def show
+    movie_id = params[:id]
+    movie = Movie.find_by(id: movie_id)
+
+    if movie
+      render json: jsonify(movie), status: :ok
+    else
+      render_error(:not_found, {id: ["Movie with id: #{movie_id} not found"]})
+    end
   end
 
   def create
+
   end
 
   private

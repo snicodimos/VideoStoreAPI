@@ -4,12 +4,10 @@ describe CustomersController do
 
   CUSTOMER_FIELDS = %w(id name registered_at postal_code phone movies_checked_out_count).sort
 
-
   describe "index" do
     it "is a real working route" do
       get customers_path
       must_respond_with :success
-
 
       body = check_response(expected_type: Array)
       expect(body.length).must_equal Customer.count
@@ -18,6 +16,7 @@ describe CustomersController do
         expect(customer.keys.sort).must_equal CUSTOMER_FIELDS
       end
     end
+
     it 'returns an empty array when there are no customers' do
       Customer.destroy_all
 
@@ -26,6 +25,17 @@ describe CustomersController do
       body = check_response(expected_type: Array)
       expect(body).must_equal []
     end
+  end
 
+  describe "sorting query parameter" do
+    it 'should sort by name' do
+
+      customer = Customer.order('name').first
+
+      get customers_path, params: {sort: 'name'}
+
+      body = check_response(expected_type: Array)
+      expect(body[0]['name']).must_equal "Amanda"
+    end
   end
 end

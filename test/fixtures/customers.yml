@@ -19,7 +19,16 @@ semret:
   phone: 111 - 592 - 0000
 
 samantha:
-  name: samantha
+  name: Samantha
+  registered_at: 2018-11-06 11:49:59
+  address: 123 California Street
+  city: Seattle
+  state: WA
+  postal_code: 98123
+  phone: 206 - 592 - 3456
+
+amanda:
+  name: Amanda
   registered_at: 2018-11-06 11:49:59
   address: 123 California Street
   city: Seattle

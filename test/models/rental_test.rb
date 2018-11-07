@@ -56,7 +56,7 @@ describe Rental do
     it "-1 checked_out_count and +1 available_inventory" do
       customer = rental.customer
       movie = rental.movie
-      
+
       pre_inventory = movie.available_inventory
       pre_movie_count = customer.movies_checked_out_count
 

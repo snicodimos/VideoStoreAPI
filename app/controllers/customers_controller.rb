@@ -10,10 +10,8 @@ class CustomersController < ApplicationController
     else params[:sort]
       customers = Customer.order(params['sort'])
     end
-
     render json: jsonify(customers), status: :ok
   end
-
 
   private
 

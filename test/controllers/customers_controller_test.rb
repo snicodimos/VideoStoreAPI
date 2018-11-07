@@ -42,6 +42,4 @@ describe CustomersController do
       expect(body[0]['name']).must_equal "Samantha"
     end
   end
-
-
 end

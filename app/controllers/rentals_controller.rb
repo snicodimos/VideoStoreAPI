@@ -32,8 +32,6 @@ class RentalsController < ApplicationController
       if rental.save
         rental.return_movie(customer, movie)
         render json: {rental_checkedout: rental.checkedout}, status: :ok
-      else
-        render_error(:bad_request, rental.errors.messages)
       end
     end
   end

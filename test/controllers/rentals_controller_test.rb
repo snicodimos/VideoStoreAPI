@@ -4,8 +4,8 @@ describe RentalsController do
   before do
     @params = {customer_id: customers(:goeun).id, movie_id: movies(:titanic).id}
   end
-  describe "checkout" do
 
+  describe "checkout" do
     it "creates an instance of Rental with valid data" do
       customer = customers(:goeun)
       movie = movies(:titanic)
@@ -64,7 +64,7 @@ describe RentalsController do
 
       post checkin_path, params: {
         customer_id: rental.customer_id, movie_id: rental.movie_id
-        }
+      }
 
 
       customer.reload
@@ -77,5 +77,17 @@ describe RentalsController do
       body = check_response(expected_type: Hash)
       expect(body).must_include "rental_checkedout"
     end
+
+
+    it "returns error for rentals that do not exist" do
+      @params[:customer_id] = nil
+      @params[:movie_id] = nil
+
+      post checkin_path, params: @params
+
+      body = check_response(expected_status: :not_found, expected_type: Hash)
+      expect(body).must_include "errors"
+    end
+
   end
 end

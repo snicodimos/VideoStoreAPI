@@ -29,9 +29,6 @@ describe CustomersController do
 
   describe "sorting query parameter" do
     it 'should sort by name' do
-
-      customer = Customer.order('name').first
-
       get customers_path, params: {sort: 'name'}
 
       body = check_response(expected_type: Array)

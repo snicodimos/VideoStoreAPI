@@ -36,7 +36,10 @@ describe CustomersController do
     end
 
     it "gives pagination and number of responses query" do
-      get customers_path, params: {n: 1, p: 2}
+      get customers_path, params: {sort: 'name', n: 1, p: 3}
+
+      body = check_response(expected_type: Array)
+      expect(body[0]['name']).must_equal "Samantha"
     end
   end
 

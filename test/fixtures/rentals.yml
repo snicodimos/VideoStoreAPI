@@ -10,10 +10,10 @@ two:
   customer: goeun
   movie: notebook
   due_date: 2018-11-06
-  checkedout: false
+  checkedout: true
 
 three:
-  customer: semret
-  movie: titanic
-  due_date: 2018-11-06
+  customer: samantha
+  movie: moana
+  due_date: 2018-11-15
   checkedout: true

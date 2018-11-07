@@ -6,6 +6,12 @@ class CustomersController < ApplicationController
     if params[:sort]
       customers = Customer.order(params['sort'])
     end
+
+    if params[:n] && params[:p]
+      customers = customers.paginate(:page => params[:p], :per_page => params[:n])
+
+      # render json: posts, meta: pagination_meta(posts), include: ['user']
+    end
     render json: jsonify(customers), status: :ok
   end
 

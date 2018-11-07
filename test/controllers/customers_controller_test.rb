@@ -27,12 +27,18 @@ describe CustomersController do
     end
   end
 
-  describe "sorting query parameter" do
+  describe "query parameters" do
     it 'should sort by name' do
       get customers_path, params: {sort: 'name'}
 
       body = check_response(expected_type: Array)
       expect(body[0]['name']).must_equal "Amanda"
     end
+
+    it "gives pagination and number of responses query" do
+      get customers_path, params: {n: 1, p: 2}
+    end
   end
+
+
 end

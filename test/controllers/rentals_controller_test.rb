@@ -10,19 +10,9 @@ describe RentalsController do
       customer = customers(:goeun)
       movie = movies(:titanic)
 
-      pre_inventory = movie.available_inventory
-      pre_movie_count = customer.movies_checked_out_count
-
       expect{
         post checkout_path, params: @params
       }.must_change "Rental.count", +1
-
-      customer.reload
-      movie.reload
-
-      expect(movie.available_inventory).must_equal pre_inventory -1
-
-      expect(customer.movies_checked_out_count).must_equal pre_movie_count +1
 
       body = check_response(expected_type: Hash)
       expect(body).must_include "rental_id"
@@ -58,21 +48,9 @@ describe RentalsController do
       customer = rental.customer
       movie = rental.movie
 
-      pre_inventory = movie.available_inventory
-      pre_movie_count = customer.movies_checked_out_count
-
-
       post checkin_path, params: {
         customer_id: rental.customer_id, movie_id: rental.movie_id
       }
-
-
-      customer.reload
-      movie.reload
-
-      expect(movie.available_inventory).must_equal pre_inventory +1
-
-      expect(customer.movies_checked_out_count).must_equal pre_movie_count -1
 
       body = check_response(expected_type: Hash)
       expect(body).must_include "rental_checkedout"

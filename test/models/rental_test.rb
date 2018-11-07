@@ -35,6 +35,37 @@ describe Rental do
       movie = rental.movie
       movie.must_be_instance_of Movie
     end
-
   end
+
+  describe "rent_movie" do
+    it "+1 checked_out_count and -1 available_inventory" do
+      customer = rental.customer
+      movie = rental.movie
+
+      pre_inventory = movie.available_inventory
+      pre_movie_count = customer.movies_checked_out_count
+
+      rental.rent_movie(customer, movie)
+
+      expect(movie.available_inventory).must_equal pre_inventory -1
+      expect(customer.movies_checked_out_count).must_equal pre_movie_count +1
+    end
+  end
+
+  describe "return_movie" do
+    it "-1 checked_out_count and +1 available_inventory" do
+      customer = rental.customer
+      movie = rental.movie
+      
+      pre_inventory = movie.available_inventory
+      pre_movie_count = customer.movies_checked_out_count
+
+      rental.return_movie(customer, movie)
+
+      expect(movie.available_inventory).must_equal pre_inventory +1
+      expect(customer.movies_checked_out_count).must_equal pre_movie_count -1
+    end
+  end
+
+
 end

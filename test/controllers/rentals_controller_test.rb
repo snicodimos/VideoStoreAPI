@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe RentalsController do
-
   describe "checkout" do
     before do
       @params = {customer_id: customers(:goeun).id, movie_id: movies(:titanic).id}
@@ -51,8 +50,6 @@ describe RentalsController do
 
       expect(body["errors"]).must_include "No movie in available inventory."
     end
-
-
   end
 
   describe "checkin" do
